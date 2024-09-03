@@ -10,7 +10,9 @@ const port = 6000;
 app.use(cors());
 app.use(express.json());
 dbConnnect();
-
+app.get('/', (req, res) => {
+	res.send('Welcome to the server');
+});
 app.use('/', router);
 
 app.listen(port, () => {
