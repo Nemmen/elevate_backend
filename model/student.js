@@ -8,6 +8,7 @@ const studentSchema = new mongoose.Schema({
 	admission: {
 		type: String,
 		required: true,
+		unique: true,
 	},
 	department: {
 		type: String,

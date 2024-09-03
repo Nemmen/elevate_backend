@@ -3,6 +3,14 @@ const Student = require("../model/student");
 
 const addstudent = async (req, res) => {
   try {
+    const stu = await Student.findOne({ admission: req.body.admission });
+    if (stu) {
+      return res.status(400).send({
+        error: "Admission Number Already Exists",
+        message: "Alredy Registered",
+      });
+    }
+
     const student = new Student(req.body);
     await student.save();
     res.status(201).send(student);

@@ -5,6 +5,17 @@ const Mangement = require('../model/management');
 
 const addmanagement = async (req, res) => {
 	try {
+
+		const man = await Mangement.findOne({ email: req.body.email });
+		if(man){
+			return res.status(400).send({
+				error: "Email Already Exists",
+				message: "Alredy Registered",
+			  });
+		}
+
+
+
 	  const mangement = new Mangement(req.body);
 	  await mangement.save();
 	  res.status(201).send(mangement);
