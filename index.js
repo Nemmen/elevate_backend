@@ -5,7 +5,7 @@ const dbConnnect = require('./database/config');
 const router = require('./routes/routes.js');
 
 
-const port = 6000;
+const port = 5000;
 
 app.use(cors());
 app.use(express.json());
