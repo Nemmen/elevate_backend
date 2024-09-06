@@ -43,4 +43,20 @@ const addfaculty = async (req, res) => {
   }
 };
 
-module.exports = { addfaculty };
+// all faculty
+const allfaculty = async (req, res) => {
+  try {
+    const faculty = await Faculty.find();
+    res.status(200).send(faculty);
+  } catch (error) {
+    console.error("Error getting faculty:", error.message);
+    res.status(500).send({
+      error: "Server Error",
+      message: "An unexpected error occurred. Please try again later.",
+    });
+  }
+};
+
+module.exports = { addfaculty, allfaculty };
+
+

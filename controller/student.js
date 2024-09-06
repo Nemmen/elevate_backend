@@ -42,4 +42,18 @@ const addstudent = async (req, res) => {
   }
 };
 
-module.exports = { addstudent };
+// all student
+const allstudent = async (req, res) => {
+  try {
+    const student = await Student.find();
+    res.status(200).send(student);
+  } catch (error) {
+    console.error("Error getting student:", error.message);
+    res.status(500).send({
+      error: "Server Error",
+      message: "An unexpected error occurred. Please try again later.",
+    });
+  }
+};
+
+module.exports = { addstudent, allstudent };

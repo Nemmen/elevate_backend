@@ -47,5 +47,20 @@ const addmanagement = async (req, res) => {
 	}
   };
 
+//   all management
+const allmanagement = async (req, res) => {
+	try {
+	  const management = await Mangement.find();
+	  res.status(200).send(management);
+	}
+	catch (error) {
+	  console.error("Error getting management:", error.message);
+	  res.status(500).send({
+		error: "Server Error",
+		message: "An unexpected error occurred. Please try again later.",
+	  });
+	}
+	  };
 
-  module.exports = { addmanagement };
+
+  module.exports = { addmanagement, allmanagement };
